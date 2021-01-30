@@ -1,55 +1,112 @@
 ---
-title: 'Dynamic Complementarity and Substitutability in Child Height Production'
-#subtitle: "A Test of Dynamic Complementarities"
+title: 'Dynamic Complementarity in Child Growth'
+subtitle: "A Research Sketch"
 author: "Jesse McDevitt-Irwin"
+header-includes:
+- \usepackage{graphicx}
+- \usepackage[margin=1in]{geometry}
+- \usepackage{calc}
+- \usepackage{float}
+- \floatplacement{figure}{H}
+- \usepackage[bottom]{footmisc}
 output: 
-  html_document:
+  pdf_document:
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 bibliography: ["/home/friend/bibtex/references.bib"]
 biblio-style: "apalike"
 nocite: | 
+ [@currieHumanCapitalDevelopment2011] [@cunhaTechnologySkillFormation2007] h[@heckmanProductivityArgumentInvesting2007] [@heckmanSkillFormationEconomics2006] [@joosophSurveyFastingPregnancy2004]
   
 ---	
 
 # Summary
 
-In this project I combine Heckman and Cunha's capacity formation model with the "thrifty phenotype" hypothesis. The thrifty phenotype hypothesis, outlined below, implies dynamic complementarity between nutrition *in-utero* and nutrition in childhood. I hope to test this implication with respect to child height using contemporary data from Indonesia.
+Using Cunha and Heckman's (2007) capacity formation model, I will test for dynamic complementarity between nutrition *in-utero* and in childhood using data on child height from Indonesia. Testing dynamic complementarity requires two instruments, one for *in-utero* nutrition and another for childhood nutrition. My first instrument will be *in-utero* exposure to Ramadan, and my second, seasonal rainfall. I will also test for endogenous parental responses to *in-utero* shocks, allowing me to bound my estimate of dynamic complementarity from above or below.
 
-Testing dynamic complementarity requires two instruments, one for *in-utero* nutrition and another for childhood nutrition. My first instrument would be the 1998 Indonesian economic crisis, a negative shock to nutrition for mothers and children exposed to it. My second instrument would be rainfall-by-district-by-year, which affects local incomes and food availability. My prediction, based on the thrifty phenotype hypothesis, is that the effect of improved nutrition in childhood will have a greater effect on height for children exposed to the 1998 crisis post-birth than for children exposed *in-utero*. Such a result would suggest that nutrition is relatively more substitutable across periods of childhood than between gestation and childhood.
+# Motivation
+
+## Dynamic Complementarity
+
+Accumulation is no longer an acceptable model for human capital. The realization that *in-utero* shocks have large effects throughout the life cycle has revolutionized our understanding of capacity formation [@almondKillingMeSoftly2011]. New evidence has required the development of new theory, such as Cunha and Heckman (2007), which can explicitly model critical periods of development. New theory has generated new questions, among which is the degree of complementarity of inputs between developmental stages. Under dynamic complementarity, the productivity of an investment in childhood is increasing in the level of investment *in-utero*.
+
+The presence dynamic complementarity has implications for the optimal timing of policy interventions, as argued extensively by Heckman (2006, 2007), but also for the evolution of inequality. Under dynamic complementarity, differences in initial endowments, rather than washing out as in the Grossman model, will be reinforced over a lifetime. Despite its importance, the presence of dynamic complementarity has, thus far, suffered few direct tests. I will test the specific case of dynamic complementarity in child growth. Child height is a strong indicator of health, and we have strong *a-priori* reason to believe that nutritional inputs exhibit complementarity between gestation and early childhood.
+
+## The Thrifty Phenotype
+
+Infant growth, with sufficient nutrition, follows a well-defined trajectory. Malnutrition causes departure from a given trajectory, slowing the velocity of growth. Following malnutrition, increased nutrition may result in accelerated growth. This is known as "catch-up" growth, as the child reaches a higher growth curve, closer to their biological potential [@tannerFoetusManPhysical1990]. The biological potential has a genetic component, but also an epigenetic component [@fureyGeneticsDrivingEpigenetics2013]. The thrifty phenotype hypothesis suggests that poor nutrition *in-utero* will result in a phenotype both shorter and with a slower metabolism [@halesTypeNoninsulindependentDiabetes1992]. Such a child will then be better suited for an environment with low nutrient availability.
+
+Although epigenetic switches are not yet well understood, they are for the most part determined *in-utero*.[^1] Thus, gestation offers a unique period of programming, in which the child's potential growth path may be set. To what degree this potential is reached is determined by net-nutrition during childhood. While oversimplified, this narrative can be easily represented within the capability-production framework, as complementarity of nutritional inputs between gestation and childhood.
 
 # Theory
 
-Infant growth, with sufficient nutrition, follows a well-defined trajectory. Malnutrition causes departure from a given trajectory, slowing the velocity of growth. Following malnutrition, increased nutrition may result in accelerated growth. This is known as "catch-up" growth, as the child reaches a higher growth curve, closer to their biological potential. The biological potential has a genetic component, but also is likely to have an epigenetic component. The thrifty phenotype hypothesis suggests that poor nutrition *in-utero* will result in a phenotype of a slower metabolism and less growth in height. Such a child will then be better suited for an environment with low nutrient availability.
+Consider the following model of capacity formation, from Currie and Almond (2011):
 
-Although epigenetic switches are not yet well understood, they are, for the most part, determined *in-utero*.[^1] Thus, gestation offers a unique period of programming, in which the child's potential growth path is determined. To what degree this potential is reached is determined by net-nutrition during. While oversimplified, this narrative can be easily represented within the capability-production framework, as dynamic complementarity of nutritional inputs between gestation and childhood.
-
-Rephrased in the model of Heckman and Cunha, we have:
-
-$$ h = A[\gamma I_1^\theta +(1-\gamma)(I_2)^\theta]^{\frac{1}{\theta}}
+$$ h = A[\gamma I_1^\theta +(1-\gamma)I_2^\theta]^{\frac{1}{\theta}}
 $$
 
-where $h$ is the adult height of an individual, $I_1$ is nutrition in the pre-natal period and $I_2$ is nutrition post-birth. The hypothesis that nutrition *in-utero*is a complement to nutrition in childhood can be stated as a condition on the cross derivative:
-$$\frac{\partial^2 h}{\partial I_1\partial (I_2+I_3)} > 0
+where $h$ is child height, $I_1$ is nutrition in the pre-natal period and $I_2$ is nutrition post-birth. Consider a positive shock to *in-utero*	 nutrition, $\mu_g$:
+
+$$ h = A[\gamma (I_1+\mu_g)^\theta +(1-\gamma)I_2^\theta]^{\frac{1}{\theta}}
 $$
-
-# Estimation
-
-In order to estimate the cross derivative, we need a quasi-random shock to in-utero nutrition, and a quasi-random shock to childhood nutrition. In simple terms, the thrifty phenotype, or dynamic complementarity in height production, implies that the effect of childhood nutrition on height is greater for those who had better in-utero nutrition. My setting is Indonesia from 1998-2007. My instrument for *in-utero* nutrition is the 1998 economic crisis in Indonesia, which saw incomes fall and prices rise, leading to widespread deterioration in nutrition. My instrument for nutrition in childhood is rainfall, which leads affects local incomes and food availability across Indonesia.
-
-The research process would take three steps:
-
-1. Determine the effect of the 1998 crisis on those *in-utero* at the time, using data collected in 2000.[^2]
-2. Determine the effect of rainfall on child height, using data collected in 2007.
-3. If both of these effects are as expected, then run an interaction of the two, where I estimate the effect of rainfall on child height depending on whether the child was exposed to the 1998 crisis *in-utero*.
-
-The 1998 shock affected the entire population. I assume that the rising prices translated into worse nutrition for children and mothers. Thus, there is a cohort who was exposed to the 1998 shock *in-utero* and another which was exposed as a neonate. Otherwise than the timing of their birth, which is separated by a few months, these groups should be broadly similar. Post-1998, differential rainfall across Indonesia yields a second instrument for nutrition, as increased rainfall causes greater local incomes and food availability. Thus we have instruments for *in-utero* nutrition and for childhood nutrition. The effect of rainfall on child height should be positive, the effect of exposure to the 1998 shock *in-utero* negative, and the interaction term between the two negative.
+Dynamic complementarity is characterized by:
+$$\frac{\partial^2 h}{\partial \mu_g\partial I_2}  > 0
+$$
 
 ## Parental Investments
 
-One concern would be that parents compensate or reinforce the nutritional shocks. Parents base their investments on birth endowments, meaning that my results could not be interpreted as purely biological. One way to test for parental responses would be to compare the heights of children with a sibling exposed to the 1998 crisis *in-utero* to those with a sibling exposed to the 1998 crisis as a neonate. If parental investments respond to birth endowments, then we ought to see changes in the height of children who have exposed siblings
+Suppose now that that $\mu_g$ also affects $I_2$, through parental investments. We obtain:
 
-[^1]: For example, DNA methylation resets with each generation and the levels of methylation in somatic tissues is generally determined by *in-utero* conditions.
+$$ \frac{\partial^2h}{\partial \mu_g \partial I_2} = \frac{\partial^2 h}{\partial I_1 \partial I_2} +  \frac{\partial^2 h}{\partial^2 I_2}\frac{\partial I_2}{\partial \mu_g}.
+$$
+
+We see that $\frac{\partial^2h}{\partial \mu_g \partial I_2}$ is no longer equal to the cross-derivative of $I_1$ and $I_2$, making it a biased test of dynamic complementarity. However, with knowledge of the direction of parental responses, we can determine the direction of this bias, assuming that $\frac{\partial^2 h}{\partial^2 I_2}$ is weakly negative from diminishing marginal returns to investment within a period.
+
+We see that if parental responses are reinforcing, then $\frac{\partial^2h}{\partial \mu_g \partial I_2} > 0$ constitutes a severe test of dynamic complementarity, as the bias goes against our hypothesis. If parental responses are compensating, the opposite is true.
+
+# Identification
+
+In order to test for dynamic complementarity, then, we need a quasi-random shock to *in-utero* nutrition and to childhood nutrition, as well as information on both child height and parental responses. Given this challenge, I take a pragmatic approach, appropriating identification strategies from previous studies and overlapping them in one population. 
+
+My setting is Indonesia from 1991-2015. My instrument for *in-utero* nutrition is exposure to Ramadan fasting *in-utero*.[^2] My instrument for nutrition in childhood is seasonal rainfall, which has a positive effect on local incomes and food availability across rural Indonesia.[^3] By using a panel data-set, I will be able to account for one of the main concerns of rainfall shocks: selective migration.
+
+Exposure to Ramadan depends on exact day of birth and can be disentangled from seasonal effects because the timing of Ramadan change each year, cycling through the solar calendar over the course of 30 years. Because the timing of Ramadan is known in advance, there could be selection out of pregnancy as women choose not to be pregnant during a time of fasting. Previous studies have found little evidence of selective pregnancy [@almondHealthCapitalPrenatal2011; @vanewijkLongtermHealthEffects2011], and I will test this possibility by checking whether *in-utero* exposure to Ramadan is balanced across observables. Ramadan creates an intent-to-treat effect, as we cannot observe whether a woman chooses to fast during pregnancy.[^4]
+
+# Data
+
+For child health and household characteristics, I have the Indonesian Family Life survey, a longitudinal household survey with waves in 1993,1997, 2000, 2007 and 2014. For parental investments, I have the Indonesian Demographic and Health survey (DHS), a repeated cross-section which includes data on the duration of breastfeeding and child immunization rates over the same time period. The Global Historical Climatology Network Monthly provides monthly rainfall data from local meteorological stations.
+
+# Estimation
+
+I will first confirm that *in-utero* exposure to Ramadan has the expected, negative effect:
+$$ hemo_i = \alpha + \beta z_i + \phi_t+\psi_m + \epsilon_i \quad (1)
+$$
+where $hemo_i$ is the hemoglobin of infant $i$,[^5] $z_i$ is exposure to Ramadan *in-utero*, and $\phi_t$ and $\psi_m$ are year and month fixed-effects.
+
+Then I will estimate the parental responses to the Ramadan shock:
+$$ y_i = \alpha + \lambda z_i + \phi_t+\psi_m + \epsilon_i \quad (2)
+$$
+where $y_i$ is duration of breastfeeding. If $\lambda >0$, then parental responses are compensating, and if $\lambda <0$, they are reinforcing.
+
+As my main specification, I would estimate the effect of rainfall during childhood on height-for-age as mediated by *in-utero* exposure to Ramadan:
+$$ h_i = \alpha + \beta z_i + \gamma r_i +\delta r_i * z_i + \phi_t+\psi_m + \epsilon_i \quad (3)
+$$
+where $h_i$ is child height-for-age and $r_i$ is a statistic of rainfall during childhood. Dynamic complementarity would imply $\delta < 0$. As discussed above, we can determine the severity of this test by the sign and magnitude of $\lambda$ in equation (2).
+
+# Future Steps
+
+In order to operationalize this framework, I need to determine how I will measure exposure to Ramadan, as the effect of Ramadan may depend on the trimester of exposure. I also need to consider the effect of extreme rainfall events, like drought and flood. Rainfall exhibits a non-linear relationship with crop yields, and also affects the disease environment. 
+
+\newpage
+# References
+
+[^1]: For example, DNA methylation resets with each generation and the levels of methylation in somatic tissues is generally determined by *in-utero* conditions [@cedarProgrammingDNAMethylation2012].
 
 
-[^2]: I do a similar exercise for Senegal during the 2008 world food price crisis in my MA thesis, see https://jrmcirwin.github.io/nut-trade/write-up/write-up.pdf.
+[^2]: The effect of Ramadan *in-utero* on later life outcomes has been well explored, particularly in Indonesia. See @almondHealthCapitalPrenatal2011; @savitriRamadanFastingNewborn2014; @kuntoEffectPrenatalRamadan2016; @vanewijkLongtermHealthEffects2011; @vanewijkAssociationsPrenatalExposure2013; @majidPersistentEffectsUtero2015.
+
+[^3]: The effect of local rainfall on food production, adult height and child health has been established in previous studies. See @levineImpactRainfallRice2014; @macciniWeatherHealthSchooling2009; @cornwellChildHealthRainfall2015.
+
+[^4]: For context, Joosoph et. al. (2004) found that from a sample of pregnant Muslim women in Singapore only 13% percent did not fast during Ramadan.
+
+[^5]: The advantages of using infant hemoglobin to measure *in-utero* nutrition is explained in section 2.3 my MA thesis. See https://jrmcirwin.github.io/nut-trade/write-up/write-up.pdf.
 
